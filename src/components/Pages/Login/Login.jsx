@@ -12,6 +12,7 @@ const {loginUser}=useContext(AuthContext);
   const password=data.password;
   loginUser(email,password).then(result=>{
    const loggedUser=result.user;
+
    console.log(loggedUser)
   })
 
