@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SocialLogin from '../../shared/SocialLogin/SocialLogin';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Provider/AuthProvider';
 const Login = () => {
+const {loginUser}=useContext(AuthContext);
+
  const { register, handleSubmit, formState: { errors } } = useForm();
- const onSubmit = data => console.log(data);
+ const onSubmit = data => {
+  const email=data.email;
+  const password=data.password;
+  loginUser(email,password).then(result=>{
+   const loggedUser=result.user;
+   console.log(loggedUser)
+  })
+
+ };
  return (
   <div className="hero min-h-screen bg-base-200">
    
