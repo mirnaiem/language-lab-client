@@ -10,9 +10,9 @@ const handleLogOut=()=>{
 
  const menuOptions=<>
  <li><Link to="/">Home</Link></li>
- <li><Link>Instructors</Link></li>
- <li><Link>Classes</Link></li>
- {user && <li><Link>Dashboard</Link></li>}
+ <li><Link to='/instructors'>Instructors</Link></li>
+ <li><Link to='/classes'>Classes</Link></li>
+ {user && <li><Link to='/dashboard/myselectedclass'>Dashboard</Link></li>}
  </>
 
  return (
