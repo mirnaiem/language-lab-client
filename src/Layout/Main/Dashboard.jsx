@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
+
+const isInstructors=false
+
  return (
 <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -16,6 +19,10 @@ const Dashboard = () => {
       {/* Sidebar content here */}
       <li><Link to='myselectedclass'>My Selected Class</Link></li>
       <li><Link to='myenrollclass'>My Enroll Class</Link></li>
+      {isInstructors && <> <li><Link to='myclass'>Add A Class</Link></li>
+      <li><Link to='addclass'>My  Classes</Link></li></>}
+      
+      <div className='divider'></div>
       <li><Link to='/'>Home</Link></li>
     </ul>
   
