@@ -8,7 +8,20 @@ const SocialLogin = () => {
  const handleGoogleLogin=()=>{
    googleLogin().then(result=>{
      const googleUser=result.user;
-     navigate('/')
+     const saveUser={name:googleUser.displayName, email:googleUser.email}
+     fetch('http://localhost:3000/users',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(saveUser)
+    }).then(res=>res.json())
+    .then(data=>{
+      if(data.insertedId){
+        navigate('/')
+      }
+    })
+     
      console.log(googleUser);
    })
    
