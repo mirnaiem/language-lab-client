@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 const Dashboard = () => {
 
 const isInstructors=false
+const isAdmin=true;
 
  return (
 <div className="drawer lg:drawer-open">
@@ -21,6 +22,8 @@ const isInstructors=false
       <li><Link to='myenrollclass'>My Enroll Class</Link></li>
       {isInstructors && <> <li><Link to='myclass'>Add A Class</Link></li>
       <li><Link to='addclass'>My  Classes</Link></li></>}
+      {isAdmin && <> <li><Link to='manageclass'>Manage Class</Link></li>
+      <li><Link to='manageuser'>Manage User</Link></li></>}
       
       <div className='divider'></div>
       <li><Link to='/'>Home</Link></li>
