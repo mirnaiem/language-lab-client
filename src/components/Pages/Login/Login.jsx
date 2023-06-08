@@ -1,22 +1,31 @@
 import React, { useContext } from 'react';
 import SocialLogin from '../../shared/SocialLogin/SocialLogin';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 const Login = () => {
 const {loginUser}=useContext(AuthContext);
-
+const navigate=useNavigate();
  const { register, handleSubmit, formState: { errors } } = useForm();
+
  const onSubmit = data => {
   const email=data.email;
   const password=data.password;
+ 
   loginUser(email,password).then(result=>{
    const loggedUser=result.user;
-
-   console.log(loggedUser)
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'User login successfully',
+    showConfirmButton: false,
+    timer: 1500
   })
-
+  navigate('/')
+  })
  };
+
  return (
   <div className="hero min-h-screen bg-base-200">
    

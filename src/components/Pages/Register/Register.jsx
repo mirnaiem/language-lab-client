@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import SocialLogin from '../../shared/SocialLogin/SocialLogin';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const Register = () => {
 const {createUser}=useContext(AuthContext);
- const { register, handleSubmit, formState: { errors } } = useForm();
+const navigate=useNavigate()
+ const { register, reset, handleSubmit, formState: { errors } } = useForm();
  const onSubmit = data =>{
    const name=data.name;
    const email=data.email;
@@ -18,9 +20,18 @@ const {createUser}=useContext(AuthContext);
      displayName: name,
      photoURL: photo
    })
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'User has been created successfully',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  reset
+  navigate('/')
     console.log(createdUser)
    })
-  console.log(data)
+  
  
  };
 
@@ -66,7 +77,7 @@ const {createUser}=useContext(AuthContext);
 
       </div>
       <div className="form-control mt-6">
-       <input disabled={false} type="submit" className="btn btn-primary" value="Login" />
+       <input disabled={false} type="submit" className="btn btn-primary" value="Register" />
       </div>
      </form>
      <div className="divider mt-0">OR</div>
