@@ -12,7 +12,7 @@ const handleLogOut=()=>{
  <li><Link to="/">Home</Link></li>
  <li><Link>Instructors</Link></li>
  <li><Link>Classes</Link></li>
- <li><Link>Dashboard</Link></li>
+ {user && <li><Link>Dashboard</Link></li>}
  </>
 
  return (
@@ -37,7 +37,7 @@ const handleLogOut=()=>{
   <div className="navbar-end">
     
     {user? <>
-    <img className='w-[40px] rounded-full me-3' src={user?.photoURL} alt="" />
+    <img title={user?.displayName} className='w-[40px] rounded-full me-3' src={user?.photoURL} alt="" />
     <button onClick={handleLogOut} className="btn bg-[#ef5743] text-white hover:text-black">LogOut</button></> :
     <Link to='/login'><button className="btn bg-[#ef5743] text-white hover:text-black">Login</button></Link>}
    
