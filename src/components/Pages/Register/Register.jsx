@@ -25,37 +25,9 @@ const Register = () => {
           displayName: name,
           photoURL: photo
         })
-          // .then(() => {
-
-          //   const saveUser = { name, email };
-          //   fetch('http://localhost:3000/users', {
-          //     method: 'POST',
-          //     headers: {
-          //       'content-type': 'application/json'
-          //     },
-          //     body: JSON.stringify(saveUser)
-          //   })
-
-          //     .then(res => res.json())
-          //     .then(data => {
-          //       console.log(data)
-          //       if (data.insertedId) {
-          //         Swal.fire({
-          //           position: 'top-end',
-          //           icon: 'success',
-          //           title: 'User has been created successfully',
-          //           showConfirmButton: false,
-          //           timer: 1500
-          //         })
-          //         setError('')
-          //         reset()
-          //         navigate('/')
-          //       }
-          //     })
-
-          // })
+         
           .then(() => {
-            const saveUSer={name, email}
+            const saveUSer={name, email, photo}
             fetch('http://localhost:3000/users',{
               method:'POST',
               headers:{
