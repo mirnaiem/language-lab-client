@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
 
 const Dashboard = () => {
 
-const isInstructors=false
-const isAdmin=true;
+  const [isAdmin]=useAdmin()
+const isInstructor=false
+// const isAdmin=true;
 
  return (
 <div className="drawer lg:drawer-open">
@@ -14,17 +16,18 @@ const isAdmin=true;
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   
   </div> 
-  <div className="drawer-side">
+  <div className="drawer-side bg-blue-400">
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-      {/* Sidebar content here */}
-      <li><Link to='myselectedclass'>My Selected Class</Link></li>
-      <li><Link to='myenrollclass'>My Enroll Class</Link></li>
-      {isInstructors && <> <li><Link to='myclass'>Add A Class</Link></li>
-      <li><Link to='addclass'>My  Classes</Link></li></>}
-      {isAdmin && <> <li><Link to='manageclass'>Manage Class</Link></li>
-      <li><Link to='manageuser'>Manage User</Link></li></>}
-      
+    <ul className="menu p-4 w-80 h-full text-white">
+      {isAdmin? <> <li><Link to='manageclass'>Manage Class</Link></li>
+      <li><Link to='manageuser'>Manage User</Link></li></>  
+      :
+      isInstructor?<> <li><Link to='myclass'>Add A Class</Link></li>
+      <li><Link to='addclass'>My  Classes</Link></li></>
+      :
+      <><li><Link to='myselectedclass'>My Selected Class</Link></li>
+      <li><Link to='myenrollclass'>My Enroll Class</Link></li></>}
+
       <div className='divider'></div>
       <li><Link to='/'>Home</Link></li>
     </ul>
@@ -35,3 +38,5 @@ const isAdmin=true;
 };
 
 export default Dashboard;
+      
+      
