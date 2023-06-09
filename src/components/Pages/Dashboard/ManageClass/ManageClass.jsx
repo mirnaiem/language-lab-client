@@ -1,6 +1,8 @@
 import React from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageClass = () => {
  const [axiosSecure]=useAxiosSecure();
@@ -11,7 +13,41 @@ const ManageClass = () => {
  if(isLoading){
   return <p>Loading...</p>
  }
+ const handleApprove = (cls) => {
+  axiosSecure.patch(`/classes/approve/${cls._id}`)
+  
+    .then((data) => {
+      console.log(data);
+      if (data.data.modifiedCount>0) {
+        refetch();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: `${cls.className} has been approve`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+};
+ const handleDeny = (cls) => {
+  axiosSecure.patch(`/classes/deny/${cls._id}`)
  
+    .then((data) => {
+      console.log(data);
+      if (data.data.modifiedCount>0) {
+        refetch();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: `${cls.className} has been deny`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+};
+
  
  return (
   <div className='w-4/5 mx-auto'>
@@ -45,9 +81,9 @@ const ManageClass = () => {
         <td>${cls.price}</td>
         <td>{cls.status?cls.status:'Pending'}</td>
         <td className='flex flex-col gap-2'>
-         <button className='btn '>Approve</button>
-         <button className='btn '>Deny</button>
-         {cls.status==='deny'&& <button className='btn '>Feedback</button>}
+         <button onClick={()=>handleApprove(cls)} className='btn '>Approve</button>
+         <button onClick={()=>handleDeny(cls)} className='btn '>Deny</button>
+         {cls.status==='Deny'&& <Link to='/dashboard/feedback'><button className='btn '>Feedback</button></Link>}
         </td>
     
        </tr>
