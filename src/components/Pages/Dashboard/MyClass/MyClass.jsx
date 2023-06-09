@@ -9,7 +9,7 @@ const MyClass = () => {
  const {data:classes, refetch,isLoading}=useQuery({
  queryKey:['classes',user?.email],
  queryFn:async()=>{
-  const res=await axiosSecure(`classes/instructor/${user?.email}`)
+  const res=await axiosSecure(`/instructor/classes/${user?.email}`)
   return res.data
  }
  })
@@ -34,7 +34,7 @@ const MyClass = () => {
       </tr>
      </thead>
      <tbody>
-      {classes.map((cls, index) =>
+      {classes?.map((cls, index) =>
        <tr key={cls._id}>
         <th>{index + 1}</th>
         <td>{cls.className}</td>

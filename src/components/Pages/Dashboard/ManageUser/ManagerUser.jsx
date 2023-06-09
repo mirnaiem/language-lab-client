@@ -6,10 +6,13 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const ManagerUser = () => {
   const [axiosSecure]=useAxiosSecure()
-  const { data: users = [], refetch } = useQuery(['users'], async () => {
+  const { data: users = [], refetch,isLoading } = useQuery(['users'], async () => {
     const res = await axiosSecure('/users');
     return res.data;
   });
+  if(isLoading){
+    return <p>Loading....</p>
+  }
 
   const handleAdminUpdate = (user) => {
     fetch(`http://localhost:3000/users/admin/${user._id}`, {
@@ -68,7 +71,7 @@ const ManagerUser = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {users?.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
