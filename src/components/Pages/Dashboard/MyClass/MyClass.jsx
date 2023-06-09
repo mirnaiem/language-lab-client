@@ -16,7 +16,7 @@ const MyClass = () => {
  if(isLoading){
   return <p>Loading.....</p>
  }
- console.log(classes);
+ 
  return (
 <div className='w-4/5 mx-auto'>
    <h2 className='text-2xl font-semibold uppercase'> Total Classes:{classes.length} </h2>

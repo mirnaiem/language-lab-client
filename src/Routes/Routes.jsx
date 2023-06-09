@@ -15,6 +15,8 @@ import AddClass from "../components/Pages/Dashboard/AddClass/AddClass";
 import ManageClass from "../components/Pages/Dashboard/ManageClass/ManageClass";
 import ManagerUser from "../components/Pages/Dashboard/ManageUser/ManagerUser";
 import Feedback from "../components/Pages/Feedback/Feedback";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+ 
 
 const router = createBrowserRouter([
   {
@@ -74,8 +76,9 @@ const router = createBrowserRouter([
         element:<ManagerUser></ManagerUser>
       },
       {
-        path:'feedback',
-        element:<Feedback></Feedback>
+        path:'feedback/:id',
+        element:<Feedback></Feedback>,
+       
       }
 
     ]

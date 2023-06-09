@@ -17,7 +17,7 @@ const ManageClass = () => {
   axiosSecure.patch(`/classes/approve/${cls._id}`)
   
     .then((data) => {
-      console.log(data);
+     
       if (data.data.modifiedCount>0) {
         refetch();
         Swal.fire({
@@ -83,7 +83,7 @@ const ManageClass = () => {
         <td className='flex flex-col gap-2'>
          <button onClick={()=>handleApprove(cls)} className='btn '>Approve</button>
          <button onClick={()=>handleDeny(cls)} className='btn '>Deny</button>
-         {cls.status==='Deny'&& <Link to='/dashboard/feedback'><button className='btn '>Feedback</button></Link>}
+         {cls.status==='Deny'&& <Link to={`/dashboard/feedback/${cls._id}`}><button className='btn '>Feedback</button></Link>}
         </td>
     
        </tr>
