@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const Dashboard = () => {
 
   const [isAdmin]=useAdmin()
-const isInstructor=false
+  const [isInstructor]=useInstructor()
+// const isInstructor=false
 // const isAdmin=true;
 
  return (
