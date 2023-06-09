@@ -1,12 +1,13 @@
 import React from 'react';
 import useAuthContext from '../../../../hooks/useAuthContext';
 import { useForm } from 'react-hook-form';
-import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+const imageToken=import.meta.env.VITE_Image_Token
 const AddClass = () => {
  const {user}=useAuthContext()
  const [axiosSecure]=useAxiosSecure()
+ const imageHostingUrl=`https://api.imgbb.com/1/upload?key=${imageToken} `
  const { register, reset, handleSubmit, formState: { errors } } = useForm();
  const onSubmit = data => {
   const className=data.name;
@@ -15,28 +16,39 @@ const AddClass = () => {
   const instructorName=data.instructorName;
   const price=data.price;
   const seat=data.seat;
-  const saveClass={className,classImage:photo,instructorEmail:email, instructorName,price,seat};
-  console.log(saveClass);
-   fetch('http://localhost:3000/classes',{
-    method:'POST',
-    headers:{
-     'content-type': 'application/json'
-    },
-    body:JSON.stringify(saveClass)
-   })
-  .then(res=>res.json())
-  .then(data=>{
-   if(data.insertedId){
-    Swal.fire({
-     position: 'top-end',
-     icon: 'success',
-     title: 'User has been created successfully',
-     showConfirmButton: false,
-     timer: 1500
-   })
-   reset()
-   }
+ 
+  
+ 
+  const formData=new FormData();
+  formData.append('image',photo[0])
+
+  fetch(imageHostingUrl,{
+   method:'POST',
+   body:formData
   })
+  .then(res=>res.json())
+  .then(imgData=>{
+
+  if(imgData.success){
+   const image=imgData.data.display_url;
+   const saveClass={className,classImage:image,instructorEmail:email, instructorName,price:parseFloat(price),seat:parseInt(seat)};
+   axiosSecure.post('/classes',saveClass)
+   .then(data=>{
+    if(data.data.insertedId){
+     Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'User has been created successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    reset()
+    }
+   })
+  }
+  })
+   
+
 
 
  }
