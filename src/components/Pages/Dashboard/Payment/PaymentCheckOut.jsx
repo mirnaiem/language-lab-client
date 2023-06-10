@@ -85,7 +85,8 @@ if(paymentIntent.status=== "succeeded"
      className, 
      instructorName, 
      price,
-     transactionId
+     transactionId,
+     date:new Date()
     }
 
     axiosSecure.post('/payment',payment)
