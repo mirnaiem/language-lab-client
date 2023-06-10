@@ -2,10 +2,11 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useAuthContext from '../../../../hooks/useAuthContext';
+import Swal from 'sweetalert2';
 
 const PaymentCheckOut = ({classInfo}) => {
- const { classImage, className, _id, instructorName, price, seat } = classInfo;
-
+ const { classImage, className, _id, classId, instructorName, price, seat } = classInfo;
+// console.log(classInfo);
 const {user}=useAuthContext()
  const [cardError,setCardError]=useState('')
  const [clientSecret,setClientSecret]=useState('')
@@ -38,13 +39,12 @@ const card=elements.getElement(CardElement)
 if(card===null){
  return
  }
- const {error, paymentMethod} = await stripe.createPaymentMethod({
+ const {error,} = await stripe.createPaymentMethod({
   type: 'card',
   card,
 });
 if(error){
-console.log('error',error)
-setCardError(error)
+setCardError(error.message)
 }
 else {
  setCardError('')
@@ -65,14 +65,45 @@ const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
 );
 if(confirmError){
  setCardError(confirmError.message);
- console.log(68,confirmError)
 }
 setProcessing(false)
 
 if(paymentIntent.status=== "succeeded"
   ){
-    setTransaction(paymentIntent.id)
-    const transaction=paymentIntent.id;}
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Payment Successful',
+    showConfirmButton: false,
+    timer: 1500
+  })
+   const transactionId=paymentIntent.id;
+  setTransaction(transactionId)
+    const payment={
+     email:user?.email || 'unknown',
+     classImage, 
+     className, 
+     instructorName, 
+     price,
+     transactionId
+    }
+
+    axiosSecure.post('/payment',payment)
+    .then(res=>{
+     if(res.data.insertedId){
+      axiosSecure.delete(`/selectclass/${_id}`)
+      .then(res=>{
+       if(res.data.deletedCount>0){
+      axiosSecure.patch(`/classes/${classId}`)
+      .then(res=>{
+
+      })
+       }
+      })
+     }
+    })
+  }
+    
 }
  return (
  <>
@@ -98,7 +129,7 @@ if(paymentIntent.status=== "succeeded"
         Pay
       </button>
     </form>
-    <p className='text-red-500 mt-4'>{cardError.message}</p>
+    {cardError && <p className='text-red-500 mt-4'>{cardError}</p>}
    {transaction && <p className='text-green-500 mt-4'>Transaction complete with transaction id: {transaction}</p>}
   </>
  );
