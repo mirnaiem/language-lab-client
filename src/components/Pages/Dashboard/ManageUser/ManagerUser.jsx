@@ -15,13 +15,11 @@ const ManagerUser = () => {
   }
 
   const handleAdminUpdate = (user) => {
-    fetch(`http://localhost:3000/users/admin/${user._id}`, {
-      method: 'PATCH',
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/users/admin/${user._id}`)
+      
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: 'top-end',
@@ -35,13 +33,11 @@ const ManagerUser = () => {
   };
 
   const handleInstructorUpdate = (user) => {
-    fetch(`http://localhost:3000/users/instructor/${user._id}`, {
-      method: 'PATCH',
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/users/instructor/${user._id}`)
+      
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: 'top-end',
