@@ -1,9 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const SelectedClassCard = ({classInfo,refetch}) => {
  const { classImage, className, _id, instructorName, price, seat } = classInfo;
+ 
  const [axiosSecure]=useAxiosSecure()
  const handleDelete=(id)=>{
   Swal.fire({
@@ -43,8 +45,16 @@ const SelectedClassCard = ({classInfo,refetch}) => {
     <p>Price: ${price}</p>
     <p>Available Seat: {seat}</p>
     <div className="card-actions justify-between ">
+    {/* <Link   to={`/dashboard/payment/${price}`+classInfo}>
+         <button className="btn text-white bg-[#efbe43]" > Pay </button></Link> */}
       
-        <button className="btn text-white bg-[#efbe43]" > Pay </button>
+        {/* <Link   to={{
+          pathname:`/dashboard/payment/${_id}`,
+          state: classInfo}}>
+         <button className="btn text-white bg-[#efbe43]" > Pay </button></Link> */}
+         <Link   to={`/dashboard/payment/${_id}`}>
+         <button className="btn text-white bg-[#efbe43]" > Pay </button></Link>
+          
         <button onClick={()=>handleDelete(_id)} className='btn text-white bg-[#ef5743]'>Delete</button>
     </div>
   </div>

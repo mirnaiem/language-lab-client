@@ -16,8 +16,9 @@ import ManageClass from "../components/Pages/Dashboard/ManageClass/ManageClass";
 import ManagerUser from "../components/Pages/Dashboard/ManageUser/ManagerUser";
 import Feedback from "../components/Pages/Feedback/Feedback";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Payment from "../components/Pages/Dashboard/Payment/Payment";
  
-
+const token=localStorage.getItem('token')
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,6 +80,16 @@ const router = createBrowserRouter([
         path:'feedback/:id',
         element:<Feedback></Feedback>,
        
+      },
+      {
+        path:"payment/:id",
+        element:<Payment></Payment>,
+        loader:({params})=>fetch(`http://localhost:3000/selectedclass/${params.id}`,{
+          headers:{
+            authorization:`bearer ${token}`
+          }
+        })
+
       }
 
     ]
