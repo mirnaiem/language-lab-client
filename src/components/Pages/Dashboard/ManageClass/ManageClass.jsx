@@ -57,8 +57,8 @@ const ManageClass = () => {
         <h2 className='  uppercase font-bold text-5xl '>All added <span className='text-[#f0604d] hover:text-black ml-2'>Class</span></h2>
       </div>
 
-      <div className="overflow-x-auto mt-6">
-        <table className="table w-[95%] mx-auto">
+      <div className="overflow-x-auto mt-16">
+        <table className="table  w-[95%] mx-auto">
           {/* head */}
           <thead className=' bg-[#2d3f53]'>
             <tr className='text-2xl text-white'>

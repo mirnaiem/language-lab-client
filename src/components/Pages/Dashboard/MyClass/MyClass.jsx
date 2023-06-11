@@ -18,13 +18,17 @@ const MyClass = () => {
  }
  
  return (
-<div className='w-4/5 mx-auto'>
-   <h2 className='text-2xl font-semibold uppercase'> Total Classes:{classes.length} </h2>
-   <div className="overflow-x-auto">
-    <table className="table w-full">
+<div className='w-full mx-auto'>
+<div className='bg-[#e0effe] h-64 flex items-center justify-center '>
+        <h2 className='  uppercase font-bold text-5xl '>Manage All<span className='text-[#f0604d] hover:text-black ml-2'>user</span></h2>
+      </div>
+   
+   <div className="overflow-x-auto w-[95%] mx-auto mt-16">
+      <h2 className='text-2xl font-semibold uppercase'> Total Classes: {classes.length} </h2>
+    <table className="table ">
      {/* head */}
-     <thead >
-      <tr>
+     <thead className=' bg-[#2d3f53]'>
+            <tr className='text-2xl text-white'>
        <th>#</th>
        <th>Class Name</th>
        <th>Status</th>
@@ -35,7 +39,7 @@ const MyClass = () => {
      </thead>
      <tbody>
       {classes?.map((cls, index) =>
-       <tr key={cls._id}>
+       <tr key={cls._id} className='font-medium text-xl'>
         <th>{index + 1}</th>
         <td>{cls.className}</td>
         <td>{cls.status?cls.status:'Pending'}</td>

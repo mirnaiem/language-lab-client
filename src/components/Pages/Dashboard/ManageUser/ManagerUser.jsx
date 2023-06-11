@@ -60,47 +60,43 @@ const ManagerUser = () => {
         <h2 className='text-2xl font-semibold uppercase'> Total user:{users.length} </h2>
         <table className='table '>
           {/* head */}
-          <thead>
-            <tr>
+          <thead className=' bg-[#2d3f53]'>
+            <tr className='text-2xl text-white'>
               <th></th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th></th>
-              <th></th>
+              <th className='text-center'>Action</th>
+              
             </tr>
           </thead>
           <tbody>
             {users?.map((user, index) => (
-              <tr key={user._id}>
+              <tr key={user._id} className='font-medium text-xl'>
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.role?user.role:'Student'}</td>
-                <td>
+                <td className='flex gap-2'>
                   
                     <button
                     
                       onClick={() => handleAdminUpdate(user)}
-                      className='btn py-2 rounded-xl w-26 bg-orange-500 text-center text-white'
+                      className='btn py-2 rounded-xl w-26 bg-orange-500 text-center text-white btn-sm'
                       disabled={user.role === 'Admin'}
                     >
                       Make Admin
                     </button>
-                 
-                </td>
-                <td>
-                  
-                    <button
+                 <button
                     
                       onClick={() => handleInstructorUpdate(user)}
-                      className='btn py-2 rounded-xl w-26 px-2 bg-orange-500 text-center text-white'
+                      className='btn py-2 rounded-xl w-26 px-2 bg-orange-500 text-center text-white btn-sm'
                       disabled={user.role === 'Admin' || user.role === 'Instructor'}
                     >
                       Make Instructor
                     </button>
-                  
                 </td>
+                
               </tr>
             ))}
           </tbody>
