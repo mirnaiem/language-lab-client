@@ -14,7 +14,7 @@ return <h2>loading....</h2>
 else if(user && isAdmin){
  return  children
 }
-console.log(isAdmin)
+
 
 return <Navigate to='/' state={{from:location}} replace></Navigate>
 };
