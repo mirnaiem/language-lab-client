@@ -17,6 +17,7 @@ import ManagerUser from "../components/Pages/Dashboard/ManageUser/ManagerUser";
 import Feedback from "../components/Pages/Feedback/Feedback";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Payment from "../components/Pages/Dashboard/Payment/Payment";
+import PaymentHisTory from "../components/Pages/Dashboard/PaymentHisTory/PaymentHisTory";
  
 const token=localStorage.getItem('token')
 const router = createBrowserRouter([
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
           }
         })
 
+      },
+      {
+        path:'paymenthistory',
+        element:<PaymentHisTory></PaymentHisTory>
       }
 
     ]

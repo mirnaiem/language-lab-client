@@ -17,16 +17,16 @@ const {user}=useAuthContext()
  const elements=useElements()
 const [axiosSecure]=useAxiosSecure()
 
-if(price>0){
 
-}
 
  useEffect(()=>{
+if(price>0){
 axiosSecure.post('/payment-intent',{price})
 .then(data=>{
  console.log(data.data);
  setClientSecret(data.data.clientSecret)
 })
+}
  },[])
 
  const handleSubmit=async(event)=>{
