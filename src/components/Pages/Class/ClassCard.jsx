@@ -62,7 +62,7 @@ const ClassCard = ({ classInfo }) => {
   };
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className={`${seat===0?'card w-96 bg-red-400 shadow-xl':'card w-96 bg-base-100 shadow-xl'} `}>
       <figure>
         <img className="w-full h-64" src={classImage} alt="Shoes" />
       </figure>
@@ -82,7 +82,7 @@ const ClassCard = ({ classInfo }) => {
             </button>
           ) : (
             <button
-              disabled={isAdmin || isInstructor || isDisabled}
+              disabled={isAdmin || isInstructor || isDisabled || seat === 0}
               onClick={handleSelect}
               className="btn text-white bg-[#ef5743]"
             >

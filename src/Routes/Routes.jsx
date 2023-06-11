@@ -15,9 +15,11 @@ import AddClass from "../components/Pages/Dashboard/AddClass/AddClass";
 import ManageClass from "../components/Pages/Dashboard/ManageClass/ManageClass";
 import ManagerUser from "../components/Pages/Dashboard/ManageUser/ManagerUser";
 import Feedback from "../components/Pages/Feedback/Feedback";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 import Payment from "../components/Pages/Dashboard/Payment/Payment";
 import PaymentHisTory from "../components/Pages/Dashboard/PaymentHisTory/PaymentHisTory";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import InstructorRoute from "./InstructorRoute.jsx/InstructorRoute";
  
 const token=localStorage.getItem('token')
 const router = createBrowserRouter([
@@ -51,7 +53,7 @@ const router = createBrowserRouter([
   // dashboard
   {
     path:'/dashboard',
-    element:<Dashboard></Dashboard>,
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
         path:'myselectedclass',
@@ -61,27 +63,36 @@ const router = createBrowserRouter([
         path:'myenrollclass',
         element:<MyEnrollClass></MyEnrollClass>
       },
+
+      // Instructor dashboard
+
       {
         path:'myclass',
-        element:<MyClass></MyClass>
+        element:<InstructorRoute><MyClass></MyClass></InstructorRoute>
       },
       {
         path:'addclass',
-        element:<AddClass></AddClass>
+        element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
       },
+ 
+    // admin dashboard
+
       {
         path:'manageclass',
-        element:<ManageClass></ManageClass>
+        element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
       },
       {
         path:'manageuser',
-        element:<ManagerUser></ManagerUser>
+        element:<AdminRoute><ManagerUser></ManagerUser></AdminRoute>
       },
       {
         path:'feedback/:id',
-        element:<Feedback></Feedback>,
+        element:<AdminRoute><Feedback></Feedback></AdminRoute>,
        
       },
+ 
+      
+
       {
         path:"payment/:id",
         element:<Payment></Payment>,

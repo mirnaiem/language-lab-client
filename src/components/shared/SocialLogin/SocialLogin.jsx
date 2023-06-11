@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
    const {googleLogin}=useContext(AuthContext);
    const navigate=useNavigate();
+   const location=useLocation()
+ const from=location.state?.from?.pathname || '/'
  const handleGoogleLogin=()=>{
    googleLogin().then(result=>{
      const googleUser=result.user;
@@ -18,7 +20,7 @@ const SocialLogin = () => {
     }).then(res=>res.json())
     .then(data=>{
       
-        navigate('/')
+        navigate(from,{replace:true})
       
     })
      

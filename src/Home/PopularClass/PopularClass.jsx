@@ -22,7 +22,7 @@ const PopularClass = () => {
   <div className='my-28'>
    <h2 className='text-center text-5xl font-bold'>Popular Class</h2>
    <div className='divider w-1/6  mx-auto'></div>
-   <div className='grid grid-cols-1 md:grid-cols-3 w-4/5 mx-auto gap-10 my-16'>
+   <div className='grid grid-cols-1 md:grid-cols-3 w-4/5 mx-auto gap-10 my-10'>
     {
      popularClasses?.map(classInfo=><PopularClassCard key={classInfo._id} classInfo={classInfo} ></PopularClassCard>)
     }

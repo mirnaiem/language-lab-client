@@ -37,7 +37,10 @@ const logOut=()=>{
    axios.post('http://localhost:3000/jwt',{
     email:currentUser.email
    })
-   .then(data=>localStorage.setItem('token',data.data.token))
+   .then(data=>{
+    localStorage.setItem('token',data.data.token)
+    setLoading(false)
+   })
   }
   else{
    localStorage.removeItem('token')

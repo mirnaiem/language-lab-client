@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import SocialLogin from '../../shared/SocialLogin/SocialLogin';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -11,6 +11,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location=useLocation()
+  const from=location.state?.from?.pathname || '/'
+ 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = data => {
@@ -28,7 +31,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/');
+        navigate(from,{replace:true});
       })
       .catch(err => {
         setError(err.message);
