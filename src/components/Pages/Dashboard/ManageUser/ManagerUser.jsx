@@ -79,7 +79,7 @@ const ManagerUser = () => {
                     
                       onClick={() => handleAdminUpdate(user)}
                       className='btn py-2 rounded-xl w-26 bg-orange-500 text-center text-white'
-                      disabled={user.role === 'Admin' || user.role === 'Instructor'}
+                      disabled={user.role === 'Admin'}
                     >
                       Make Admin
                     </button>

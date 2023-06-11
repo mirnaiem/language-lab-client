@@ -31,7 +31,7 @@ const AddClass = () => {
 
   if(imgData.success){
    const image=imgData.data.display_url;
-   const saveClass={className,classImage:image,instructorEmail:email, instructorName,price:parseFloat(price),seat:parseInt(seat)};
+   const saveClass={className,classImage:image,instructorEmail:email, instructorImage:user?.photoURL, instructorName,price:parseFloat(price),seat:parseInt(seat)};
    
    axiosSecure.post('/classes',saveClass)
    .then(data=>{
