@@ -11,13 +11,13 @@ const Review = () => {
  
  return (
   <>
-  <h2 className='text-center text-5xl font-bold'>Student Review</h2>
-   <div className='divider w-1/6  mx-auto'></div>
+  <h2 className='text-center text-4xl md:text-5xl font-bold'>Student Review</h2>
+   <div className='divider w-2/6 md:w-1/6  mx-auto'></div>
   <div className='bg-[#fff6f4]'>
    
-   <div className='flex flex-col py-24 md:flex-row gap-4 md:gap-16 justify-center items-center w-4/5 mx-auto'>
-    <img className='w-1/2 rounded-full' src="https://img.freepik.com/free-photo/brainstorm-meeting_1098-15871.jpg?size=626&ext=jpg&ga=GA1.2.1419972379.1680192737&semt=sph" alt="" />
-    <div className='w-1/2'>
+   <div className='flex flex-col py-24 md:flex-row gap-4 md:gap-16 justify-center md:items-center w-4/5 mx-auto'>
+    <img className=' w-full md:w-1/2 rounded-xl md:rounded-full' src="https://img.freepik.com/free-photo/brainstorm-meeting_1098-15871.jpg?size=626&ext=jpg&ga=GA1.2.1419972379.1680192737&semt=sph" alt="" />
+    <div className='w-full md:w-1/2'>
      <h2 className='text-5xl font-bold'> what our <span className='text-[#ef5743]'>Students</span> say about us</h2>
 
      <Swiper
