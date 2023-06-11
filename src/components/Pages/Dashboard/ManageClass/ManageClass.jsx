@@ -81,9 +81,9 @@ const ManageClass = () => {
         <td>${cls.price}</td>
         <td>{cls.status?cls.status:'Pending'}</td>
         <td className='flex flex-col gap-2'>
-         <button onClick={()=>handleApprove(cls)} className='btn '>Approve</button>
-         <button onClick={()=>handleDeny(cls)} className='btn '>Deny</button>
-         {cls.status==='Deny'&& <Link to={`/dashboard/feedback/${cls._id}`}><button className='btn '>Feedback</button></Link>}
+         <button onClick={()=>handleApprove(cls)} disabled={cls.status==='Deny' || cls.status==='Approve'} className='btn btn-primary'>Approve</button>
+         <button onClick={()=>handleDeny(cls)} disabled={cls.status==='Deny' || cls.status==='Approve'} className='btn btn-primary'>Deny</button>
+         {cls.status&& <Link to={`/dashboard/feedback/${cls._id}`}><button className='btn '>Feedback</button></Link>}
         </td>
     
        </tr>

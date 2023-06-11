@@ -12,7 +12,7 @@ const StudentRoute = ({ children }) => {
     const res = await axiosSecure(`/user/${user?.email}`);
     return res.data;
   });
-console.log(users);
+  
   if (isStudentLoading || loading) {
     return <p>Loading....</p>;
   } else if (user && !users.role) {

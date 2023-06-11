@@ -21,9 +21,16 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import InstructorRoute from "./InstructorRoute.jsx/InstructorRoute";
 import StudentRoute from "./StudentRoute/StudentRoute";
+import NotFound from "../components/Pages/NotFound/NotFound";
  
 const token=localStorage.getItem('token')
 const router = createBrowserRouter([
+  {
+    
+    path:'*',
+    element:<NotFound></NotFound>
+   
+},
   {
     path: "/",
     element: <Main></Main>,
