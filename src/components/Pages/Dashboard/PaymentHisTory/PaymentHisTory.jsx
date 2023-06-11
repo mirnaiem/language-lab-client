@@ -18,14 +18,14 @@ const PaymentHisTory = () => {
   }
  return (
   <div className='w-full mt-0'>
-    <div className='bg-[#fff1e7] h-64 flex items-center justify-center '>
+    <div className='bg-[#e0effe] h-64 flex items-center justify-center '>
   <h2 className='  uppercase font-bold text-5xl '>your payment<span className='text-[#f0604d] hover:text-black ml-2'>history</span></h2>
   </div>
   <div className='overflow-x-auto mt-6'>
-        <table className='table w-full'>
+        <table className='table w-[95%] mx-auto'>
           {/* head */}
-          <thead>
-            <tr className='text-2xl bg-red-100'>
+          <thead className=' bg-[#2d3f53]'>
+            <tr className='text-2xl text-white'>
               <th>#</th>
               <th>CLass Name</th>
               <th>Email</th>

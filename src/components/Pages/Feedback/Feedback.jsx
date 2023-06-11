@@ -33,8 +33,10 @@ axiosSecure.post(`/classes/feedback/${loader.id}`,feedback)
   
  
 <div className='w-full'>
- <h2 className='text-center text-4xl text-orange-500 mb-10 font-semibold'>Please Give a Feedback !</h2>
-<form onSubmit={handleSubmit(onSubmit)} className='w-3/5 bg-blue-500 p-5 rounded-lg mx-auto'>
+<div className='bg-[#e0effe] h-64 flex items-center justify-center '>
+        <h2 className='  uppercase font-bold text-5xl '>Give a <span className='text-[#f0604d] hover:text-black ml-2'>feedback</span></h2>
+      </div>
+<form onSubmit={handleSubmit(onSubmit)} className='w-3/5 mt-28 bg-blue-500 p-5 rounded-lg mx-auto'>
    
    <label className="label">
      <span className="label-text text-white">Give a Feedback</span>

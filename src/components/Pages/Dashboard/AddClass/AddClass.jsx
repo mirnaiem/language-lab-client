@@ -55,13 +55,16 @@ const AddClass = () => {
  }
  return (
   <div className='w-full'>
-   <form onSubmit={handleSubmit(onSubmit)}  className='w-full'>
+    <div className='bg-[#e0effe] h-64 flex items-center justify-center '>
+        <h2 className='  uppercase font-bold text-5xl '>Add your<span className='text-[#f0604d] hover:text-black ml-2'>Class</span></h2>
+      </div>
+   <form onSubmit={handleSubmit(onSubmit)}  className='w-full mt-32'>
        <div className='grid w-4/5 mx-auto gap-4 grid-cols-1 md:grid-cols-3 '>
        <div className="form-control">
           <label className="label">
             <span className="label-text">Class Name</span>
           </label>
-          <input type="text" {...register("name", { required: true })} placeholder='name of the class' className="input input-bordered" />
+          <input type="text" {...register("name", { required: true })} placeholder='name of the class' className="input " />
           
         </div>
       
@@ -69,14 +72,14 @@ const AddClass = () => {
           <label className="label">
             <span className="label-text">Class Image</span>
           </label>
-          <input type="file" {...register("picture", { required: true })} placeholder="photo"className="file-input file-input-bordered w-full max-w-xs"  />
+          <input type="file" {...register("picture", { required: true })} placeholder="photo"className="file-input w-full max-w-xs"  />
         </div>
        
         <div className="form-control">
           <label className="label">
             <span className="label-text">Instructor Name</span>
           </label>
-          <input type="text" {...register("instructorName", { required: true })} defaultValue={user?.displayName}  className="input input-bordered" />
+          <input type="text" {...register("instructorName", { required: true })} defaultValue={user?.displayName}  className="input " />
           
         </div>
        </div>
@@ -86,27 +89,27 @@ const AddClass = () => {
             <span className="label-text">Instructor Email</span>
           </label>
           {/* {defaultValue:user?.email}, */}
-          <input type="email" {...register("email", { required: true })} defaultValue={user?.email}   className="input input-bordered" />
+          <input type="email" {...register("email", { required: true })} defaultValue={user?.email}   className="input " />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Available Seats</span>
           </label>
-          <input type="number" {...register("seat", { required: true })}  placeholder='available seat' className="input input-bordered" />
+          <input type="number" {...register("seat", { required: true })}  placeholder='available seat' className="input " />
           
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Price</span>
           </label>
-          <input type="number" {...register("price", { required: true })}  placeholder='price' className="input input-bordered" />
+          <input type="number" {...register("price", { required: true })}  placeholder='price' className="input " />
           
         </div>
        </div>
    
-        <div className="form-control w-4/5 mx-auto mt-6">
+        <div className="form-control w-2/5 mx-auto mt-6">
           
-          <input className="btn bg-cyan-600 border-0 btn-block" type="submit" value="Add Class" />
+          <input className="btn bg-[#194164] hover:bg-[#486177] border-0 btn-block text-white" type="submit" value="Add Class" />
         </div>
       </form>
   </div>

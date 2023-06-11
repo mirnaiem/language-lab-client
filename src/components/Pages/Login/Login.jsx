@@ -11,15 +11,15 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location=useLocation()
-  const from=location.state?.from?.pathname || '/'
- 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  const { register, handleSubmit, formState: { errors }, watch } = useForm();
+  const password = watch('password'); 
 
   const onSubmit = data => {
     const email = data.email;
     const password = data.password;
-
     loginUser(email, password)
       .then(result => {
         const loggedUser = result.user;
@@ -31,7 +31,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate(from,{replace:true});
+        navigate(from, { replace: true });
       })
       .catch(err => {
         setError(err.message);
@@ -46,7 +46,7 @@ const Login = () => {
     <div className="hero min-h-screen bg-base-200">
 
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center w-1/2  lg:text-left">
+        <div className="text-center w-1/2 relative  lg:text-left">
           <h1 className="text-5xl font-bold text-center mb-3">Login Here!</h1>
           <img src="https://img.freepik.com/free-vector/app-development-concept-with-flat-design_23-2147855147.jpg?size=626&ext=jpg&ga=GA1.1.1419972379.1680192737&semt=ais" alt="" />
         </div>
@@ -59,7 +59,7 @@ const Login = () => {
               <input type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
               {errors.email && <span className='text-red-500'>Email is required</span>}
             </div>
-            <div className="form-control relative">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -69,18 +69,19 @@ const Login = () => {
                 placeholder="password"
                 className="input input-bordered"
               />
-              <button
-                className="absolute end-3 top-14 focus:outline-none"
-                onClick={handleTogglePasswordVisibility}
-              >
-                {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
-              </button>
+
             </div>
             <div className="form-control mt-6">
               <input disabled={false} type="submit" className="btn btn-primary" value="Login" />
             </div>
             <p className='text-red-500'>{error}</p>
           </form>
+          {password && <button
+            className="absolute end-10 top-44 focus:outline-none"
+            onClick={handleTogglePasswordVisibility}
+          >
+            {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+          </button>}
           <div className="divider mt-0">OR</div>
           <SocialLogin></SocialLogin>
           <p className='text-center pb-3'>Don't Have an Account? Please, <Link className='text-blue-500' to='/register'>Register.</Link></p>

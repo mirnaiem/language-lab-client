@@ -110,6 +110,7 @@ if(paymentIntent.status=== "succeeded"
  <>
    <form onSubmit={handleSubmit}>
       <CardElement
+      className='bg-white p-6 border border-gray-300'
         options={{
           style: {
             base: {

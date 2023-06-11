@@ -21,16 +21,16 @@ const MySelectClass = () => {
  return (
   <div className='w-full'>
    
-  <div className='bg-[#fff1e7] h-64 flex items-center justify-center '>
+  <div className='bg-[#e0effe] h-64 flex items-center justify-center '>
   <h2 className='  uppercase font-bold text-5xl '>List Of <span className='text-[#f0604d] hover:text-black ml-2'>Class</span></h2>
   </div>
 
-  <div className='grid grid-cols-1 md:grid-cols-3 gap-3 my-24 mx-3'>
-   {classes.length? 
-    classes?.map(classInfo=><SelectedClassCard refetch={refetch} key={classInfo._id} classInfo={classInfo}></SelectedClassCard>) 
-    : <h1 className='text-3xl text-center text-red-300'> NO Class Found </h1>
+  
+   {classes.length? <div className='grid grid-cols-1 md:grid-cols-3 gap-3 my-24 mx-3'>
+    {classes?.map(classInfo=><SelectedClassCard refetch={refetch} key={classInfo._id} classInfo={classInfo}></SelectedClassCard>)}</div> 
+    : <h1 className='text-3xl mt-10 text-center text-red-300'> NO Class Found </h1>
 }
-  </div>
+  
  
  </div>
  );

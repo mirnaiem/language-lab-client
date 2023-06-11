@@ -42,7 +42,7 @@ const SelectedClassCard = ({classInfo,refetch}) => {
   <div className="card-body">
     <h2 className="card-title">{className}</h2>
     <h2 className="text-xl">Instructor Name: {instructorName}</h2>
-    <p>Price: ${price}</p>
+    <p>Price: <span className='text-yellow-500 font-bold'>${price}</span></p>
     <p>Available Seat: {seat}</p>
     <div className="card-actions justify-between ">
     {/* <Link   to={`/dashboard/payment/${price}`+classInfo}>

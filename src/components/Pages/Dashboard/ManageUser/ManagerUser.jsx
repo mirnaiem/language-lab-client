@@ -51,10 +51,14 @@ const ManagerUser = () => {
   };
 
   return (
-    <div className='w-4/5 mx-auto'>
-      <h2 className='text-2xl font-semibold uppercase'> Total user:{users.length} </h2>
-      <div className='overflow-x-auto'>
-        <table className='table w-full'>
+    <div className='w-full mx-auto'>
+      <div className='bg-[#e0effe] h-64 flex items-center justify-center '>
+        <h2 className='  uppercase font-bold text-5xl '>Manage All<span className='text-[#f0604d] hover:text-black ml-2'>user</span></h2>
+      </div>
+      
+      <div className='overflow-x-auto w-[95%] mx-auto mt-16'>
+        <h2 className='text-2xl font-semibold uppercase'> Total user:{users.length} </h2>
+        <table className='table '>
           {/* head */}
           <thead>
             <tr>

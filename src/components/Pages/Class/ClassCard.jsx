@@ -4,7 +4,7 @@ import useInstructor from '../../../hooks/useInstructor';
 import useAuthContext from '../../../hooks/useAuthContext';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ClassCard = ({ classInfo }) => {
   
@@ -12,7 +12,7 @@ const ClassCard = ({ classInfo }) => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const { classImage, className, _id, instructorName, price, seat } = classInfo;
-
+  const location=useLocation()
   const { user,logOut } = useAuthContext();
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
@@ -52,10 +52,10 @@ const ClassCard = ({ classInfo }) => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ok',
+        confirmButtonText: 'Login',
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login');
+          navigate('/login',{state:{from:location}});
         }
       });
     }

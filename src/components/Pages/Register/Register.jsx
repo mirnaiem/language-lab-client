@@ -11,12 +11,15 @@ const Register = () => {
   const navigate = useNavigate()
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-
+console.log(data);
     const name = data.name;
     const email = data.email;
     const photo = data.photo;
     const password = data.password;
-
+    const confirm=data.confirm;
+    if(password != confirm){
+      return setError("Password does not match!")
+    }
     createUser(email, password)
       .then(result => {
 
@@ -87,7 +90,7 @@ const Register = () => {
               </label>
               <input type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
               {errors.email && <span className='text-red-500'>Email is required</span>}
-              <p className='text-red-500'>{error}</p>
+              
             </div>
             <div className="form-control">
               <label className="label">
@@ -97,6 +100,14 @@ const Register = () => {
               {errors.password?.type === 'required' && <span className='text-red-500'>Password is required</span>}
               {errors.password?.type === 'minLength' && <span className='text-red-500'>Password must be six characters</span>}
               {errors.password?.type === 'pattern' && <span className='text-red-500'>Password must be one uppercase one lowercase one special characters and one number </span>}
+
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
+              </label>
+              <input type="password" {...register("confirm", { required: true,})} placeholder="confirm password" className="input input-bordered" />
+              <p className='text-red-500'>{error}</p>
 
             </div>
             <div className="form-control mt-6">
