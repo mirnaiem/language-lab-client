@@ -16,7 +16,7 @@ const handleLogOut=()=>{
  </>
 
  return (
-<div className='bg-base-100 sticky top-0 z-10'>
+<div className='bg-base-100 sticky shadow-lg top-0 z-10'>
 <div className="navbar w-full  md:w-4/5 mx-auto ">
   <div className="navbar-start ">
     <div className="dropdown">

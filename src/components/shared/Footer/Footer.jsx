@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
  return (
-  <div className='bg-base-200'>
+  <div className='bg-[#def2eb]'>
   <footer className="footer grid-cols-2 md:grid-cols-4 p-10  text-base-content">
   <div>
     <img className='w-2/5 rounded-full' src="https://i.ibb.co/ctBp3JW/Language-Lab.png" alt="" />

@@ -20,6 +20,7 @@ import PaymentHisTory from "../components/Pages/Dashboard/PaymentHisTory/Payment
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import InstructorRoute from "./InstructorRoute.jsx/InstructorRoute";
+import StudentRoute from "./StudentRoute/StudentRoute";
  
 const token=localStorage.getItem('token')
 const router = createBrowserRouter([
@@ -55,13 +56,30 @@ const router = createBrowserRouter([
     path:'/dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
+
+      // Student dashboard
       {
         path:'myselectedclass',
-        element:<MySelectClass></MySelectClass>
+        element:<StudentRoute><MySelectClass></MySelectClass></StudentRoute>
       },
       {
         path:'myenrollclass',
-        element:<MyEnrollClass></MyEnrollClass>
+        element:<StudentRoute><MyEnrollClass></MyEnrollClass></StudentRoute>
+      },
+      
+      {
+        path:"payment/:id",
+        element:<StudentRoute><Payment></Payment></StudentRoute>,
+        loader:({params})=>fetch(`http://localhost:3000/selectedclass/${params.id}`,{
+          headers:{
+            authorization:`bearer ${token}`
+          }
+        })
+
+      },
+      {
+        path:'paymenthistory',
+        element:<StudentRoute><PaymentHisTory></PaymentHisTory></StudentRoute>
       },
 
       // Instructor dashboard
@@ -93,20 +111,7 @@ const router = createBrowserRouter([
  
       
 
-      {
-        path:"payment/:id",
-        element:<Payment></Payment>,
-        loader:({params})=>fetch(`http://localhost:3000/selectedclass/${params.id}`,{
-          headers:{
-            authorization:`bearer ${token}`
-          }
-        })
-
-      },
-      {
-        path:'paymenthistory',
-        element:<PaymentHisTory></PaymentHisTory>
-      }
+     
 
     ]
   }
