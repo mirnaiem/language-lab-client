@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path:"payment/:id",
         element:<StudentRoute><Payment></Payment></StudentRoute>,
-        loader:({params})=>fetch(`http://localhost:3000/selectedclass/${params.id}`,{
+        loader:({params})=>fetch(` https://assignment-12-server-topaz-one.vercel.app/selectedclass/${params.id}`,{
           headers:{
             authorization:`bearer ${token}`
           }

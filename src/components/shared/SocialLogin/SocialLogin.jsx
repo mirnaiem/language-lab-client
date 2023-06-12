@@ -11,7 +11,7 @@ const SocialLogin = () => {
    googleLogin().then(result=>{
      const googleUser=result.user;
      const saveUser={name:googleUser.displayName, email:googleUser.email}
-     fetch('http://localhost:3000/users',{
+     fetch(' https://assignment-12-server-topaz-one.vercel.app/users',{
       method:'POST',
       headers:{
         'content-type':'application/json'

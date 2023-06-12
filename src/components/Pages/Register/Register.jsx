@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
+// import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const Register = () => {
   const [error, setError] = useState('')
   const { createUser } = useContext(AuthContext);
+  // const [axiosSecure]=useAxiosSecure()
   const navigate = useNavigate()
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -31,7 +33,7 @@ console.log(data);
          
           .then(() => {
             const saveUSer={name, email, photo}
-            fetch('http://localhost:3000/users',{
+            axiosSecure.post('/users',{
               method:'POST',
               headers:{
                 'content-type':'application/json'

@@ -34,7 +34,7 @@ const logOut=()=>{
 
   // jwt
   if(currentUser){
-   axios.post('http://localhost:3000/jwt',{
+   axios.post(' https://assignment-12-server-topaz-one.vercel.app/jwt',{
     email:currentUser.email
    })
    .then(data=>{

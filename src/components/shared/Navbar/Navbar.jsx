@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Navbar = () => {
 const {user,logOut}=useContext(AuthContext)
+const [isAdmin]=useAdmin()
+const [isInstructor]=useInstructor()
 const handleLogOut=()=>{
   logOut().then(()=>{})
 }
@@ -12,7 +16,7 @@ const handleLogOut=()=>{
  <li><Link to="/">Home</Link></li>
  <li><Link to='/instructors'>Instructors</Link></li>
  <li><Link to='/classes'>Classes</Link></li>
- {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
+{user && <li><Link to={`/dashboard/${isAdmin?'manageclass':isInstructor?'myclass':'myselectedclass'}`}>Dashboard</Link></li>}
  </>
 
  return (
