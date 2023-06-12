@@ -14,7 +14,7 @@ const ClassCard = ({ classInfo }) => {
   const [isInstructor] = useInstructor();
   const { classImage, className, _id, instructorName, price, seat } = classInfo;
   const location=useLocation()
-  const { user,logOut } = useAuthContext();
+  const { user} = useAuthContext();
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
 
