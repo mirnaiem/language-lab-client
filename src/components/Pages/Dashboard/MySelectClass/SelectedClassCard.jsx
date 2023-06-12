@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
 
+
 const SelectedClassCard = ({classInfo,refetch}) => {
  const { classImage, className, _id, instructorName, price, seat } = classInfo;
  
@@ -35,7 +36,8 @@ const SelectedClassCard = ({classInfo,refetch}) => {
  })
  }
  return (
-  <div className="card w-96 bg-base-100 shadow-xl">
+ 
+   <div className="card w-full bg-base-100 shadow-xl">
   <figure>
     <img className="w-full h-64" src={classImage} alt="Shoes" />
   </figure>
@@ -45,13 +47,6 @@ const SelectedClassCard = ({classInfo,refetch}) => {
     <p>Price: <span className='text-yellow-500 font-bold'>${price}</span></p>
     <p>Available Seat: {seat}</p>
     <div className="card-actions justify-between ">
-    {/* <Link   to={`/dashboard/payment/${price}`+classInfo}>
-         <button className="btn text-white bg-[#efbe43]" > Pay </button></Link> */}
-      
-        {/* <Link   to={{
-          pathname:`/dashboard/payment/${_id}`,
-          state: classInfo}}>
-         <button className="btn text-white bg-[#efbe43]" > Pay </button></Link> */}
          <Link   to={`/dashboard/payment/${_id}`}>
          <button className="btn text-white bg-[#efbe43]" > Pay </button></Link>
           
@@ -59,6 +54,7 @@ const SelectedClassCard = ({classInfo,refetch}) => {
     </div>
   </div>
 </div>
+ 
  );
 };
 

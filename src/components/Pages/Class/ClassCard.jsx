@@ -5,6 +5,7 @@ import useAuthContext from '../../../hooks/useAuthContext';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 const ClassCard = ({ classInfo }) => {
   
@@ -62,7 +63,8 @@ const ClassCard = ({ classInfo }) => {
   };
 
   return (
-    <div className={`${seat===0?'card w-96 bg-red-400 shadow-xl':'card w-96 bg-base-100 shadow-xl'} `}>
+   <Fade delay={300}>
+     <div className={`${seat===0?'card w-96 h-[450px] bg-red-400 shadow-xl':'card w-96 h-[450px] bg-base-100 shadow-xl'} `}>
       <figure>
         <img className="w-full h-64" src={classImage} alt="Shoes" />
       </figure>
@@ -92,6 +94,7 @@ const ClassCard = ({ classInfo }) => {
         </div>
       </div>
     </div>
+   </Fade>
   );
 };
 

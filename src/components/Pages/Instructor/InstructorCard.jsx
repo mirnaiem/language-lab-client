@@ -1,10 +1,12 @@
 import React from 'react';
+import { JackInTheBox, Slide } from 'react-awesome-reveal';
 
 const InstructorCard = ({instructor}) => {
  const {photo,name,email}=instructor
  return (
  
-   <div className="card w-96 bg-base-100 shadow-xl">
+   <Slide>
+    <div className="card w-96 bg-base-100 h-[500px] shadow-xl">
       <figure>
         <img className="w-full h-64" src={photo} alt="instructor photo" />
       </figure>
@@ -14,6 +16,7 @@ const InstructorCard = ({instructor}) => {
         <button className='btn text-white mt-3 bg-[#ef5743]'>Show More</button>
       </div>
     </div>
+   </Slide>
   
         
  );
