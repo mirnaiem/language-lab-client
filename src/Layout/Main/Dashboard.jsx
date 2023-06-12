@@ -27,7 +27,7 @@ const {user}=useAuthContext()
     
     <ul className="menu p-4 w-80 h-full text-xl text-white">
     <div className='flex flex-col gap-4 items-center mb-10'>
-      <img className='w-2/5 rounded-full' src={user?.photoURL} alt="" />
+      <img className='w-2/5 h-[103px] rounded-full' src={user?.photoURL} alt="" />
       <div><h2 className='text-2xl text-center font-bold'>{user?.displayName}</h2>
       <p className='text-center'>{user?.email}</p></div>
     </div> 

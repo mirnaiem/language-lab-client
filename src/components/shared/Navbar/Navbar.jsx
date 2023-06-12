@@ -41,7 +41,7 @@ const handleLogOut=()=>{
   <div className="navbar-end">
     
     {user? <>
-    <img title={user?.displayName} className='w-[40px] rounded-full me-3' src={user?.photoURL} alt="" />
+    <img title={user?.displayName} className='w-10 h-10 rounded-full me-3' src={user?.photoURL} alt="" />
     <button onClick={handleLogOut} className="btn bg-[#ef5743] text-white hover:text-black">LogOut</button></> :
     <Link to='/login'><button className="btn bg-[#ef5743] text-white hover:text-black">Login</button></Link>}
    

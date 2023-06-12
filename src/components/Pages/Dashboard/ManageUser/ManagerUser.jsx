@@ -15,7 +15,7 @@ const ManagerUser = () => {
   }
 
   const handleAdminUpdate = (user) => {
-    axiosSecure.patch(`/users/admin/${user._id}`)
+    axiosSecure.patch(`/users/admin/${user?._id}`)
       
       .then((data) => {
         console.log(data);
@@ -33,7 +33,7 @@ const ManagerUser = () => {
   };
 
   const handleInstructorUpdate = (user) => {
-    axiosSecure.patch(`/users/instructor/${user._id}`)
+    axiosSecure.patch(`/users/instructor/${user?._id}`)
       
       .then((data) => {
         console.log(data);
@@ -42,7 +42,7 @@ const ManagerUser = () => {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: `${user.name} has been made an instructor`,
+            title: `${user?.name} has been made an instructor`,
             showConfirmButton: false,
             timer: 1500,
           });

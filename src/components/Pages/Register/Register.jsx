@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 const Register = () => {
   const [error, setError] = useState('')
   const { createUser } = useContext(AuthContext);
-  // const [axiosSecure]=useAxiosSecure()
   const navigate = useNavigate()
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -22,7 +21,8 @@ console.log(data);
     if(password != confirm){
       return setError("Password does not match!")
     }
-    createUser(email, password)
+    else{
+      createUser(email, password)
       .then(result => {
 
         const createdUser = result.user;
@@ -33,7 +33,7 @@ console.log(data);
          
           .then(() => {
             const saveUSer={name, email, photo}
-            axiosSecure.post('/users',{
+            fetch('https://assignment-12-server-topaz-one.vercel.app/users',{
               method:'POST',
               headers:{
                 'content-type':'application/json'
@@ -55,9 +55,10 @@ console.log(data);
                 }
               })
           })
-        console.log(createdUser)
+        
       })
       .catch(err => setError(err.message))
+    }
 
 
   };
