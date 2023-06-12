@@ -15,7 +15,7 @@ const Review = () => {
  <Slide >
  <h2 className='text-center text-4xl md:text-5xl font-bold'>Student Review</h2>
  </Slide>
-   <Slide direction='left'>
+   <Slide direction='right'>
    <div className='divider w-2/6 md:w-1/6  mx-auto'></div>
    </Slide>
   <div className='bg-[#fff6f4] '>
