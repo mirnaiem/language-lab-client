@@ -14,8 +14,8 @@ const Home = () => {
   const themeClass = isDarkTheme ? 'dark' : 'light';
 
   return (
-    <div className={`home ${themeClass} relative`}>      
-<form className="form-control absolute z-10 right-4 -top-14">
+    <div className={`home ${themeClass} `}>      
+<form className="form-control sticky z-10 top-20">
   <label className="label cursor-pointer">
     <span className="label-text"></span>
     <input
